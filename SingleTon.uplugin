@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "SingleTon",
+	"Description": "This plugin makes it possible only one instance of your game can be run at the same time",
+	"Category": "Other",
+	"CreatedBy": "g0415shenw",
+	"EngineVersion": "5.0.0",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "SingleTon",
+			"Type": "Runtime",
+			"LoadingPhase": "EarliestPossible",
+			"WhitelistPlatforms": [
+				"Win64"
+			]
+		}
+	]
+}
