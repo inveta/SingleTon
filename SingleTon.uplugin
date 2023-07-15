@@ -6,7 +6,6 @@
 	"Description": "This plugin makes it possible only one instance of your game can be run at the same time",
 	"Category": "Other",
 	"CreatedBy": "g0415shenw",
-	"EngineVersion": "5.0.0",
 	"CanContainContent": false,
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
