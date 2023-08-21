@@ -13,7 +13,7 @@ ASingleActor::ASingleActor()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	//PrimaryActorTick.bCanEverTick = true;
-
+    m_fLock = nullptr;
 }
 
 // Called when the game starts or when spawned
@@ -39,7 +39,8 @@ void ASingleActor::BeginPlay()
 
     UE_LOG(LogTemp, Log, TEXT("LockFilePath= %s"), *LockFilePath);
 
-    if (!IFileManager::Get().CreateFileWriter(*LockFilePath, 0))
+    m_fLock = IFileManager::Get().CreateFileWriter(*LockFilePath, 0);
+    if (!m_fLock)
     {
         UE_LOG(LogTemp, Log, TEXT("CheckAnotherAppInstance RequestExit"));
         FPlatformApplicationMisc::RequestMinimize();
@@ -48,4 +49,14 @@ void ASingleActor::BeginPlay()
 #endif
 }
 
+void ASingleActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+#if !UE_EDITOR
+    if (nullptr != m_fLock)
+    {
+        m_fLock->Close();
+    }
+#endif 
+    Super::EndPlay(EndPlayReason);
+}
 
